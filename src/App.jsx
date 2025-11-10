@@ -15,10 +15,10 @@ const key = (k) => `${APP_ID}:${k}`;    // helper to prefix keys
 
 /* ---------------- LocalStorage keys ---------------- */
 const LS_KEYS = {
-  PREV_PLANNED: "grazingPlanner_prevPlannedADA_byPasture",
-  PREV_ACTUAL: "grazingPlanner_prevActualADA_byPasture",
-  LAST_PLAN: "grazingPlanner_lastPlan_rows",
-  START_DATE: "grazingPlanner_startDate",
+  PREV_PLANNED: key("prevPlannedADA_byPasture"),
+  PREV_ACTUAL: key("prevActualADA_byPasture"),
+  LAST_PLAN: key("lastPlan_rows"),
+  START_DATE: key("startDate"),
 
   // drafts system (adjust names to match your code)
   DRAFTS_FS:    key("drafts_fs"),        // the “Year → Draft n” tree
@@ -363,7 +363,8 @@ function StaticMap({ rows, featureByPasture, allFeatures, svgRef }) {
     const a = routeAnchors[i];
     const b = routeAnchors[i + 1];
     const [sx, sy] = shiftTowards([a.x, a.y], [b.x, b.y], SHIFT_FROM_TEXT);
-    const d = `M ${sx} ${sy} L ${b.x} ${b.y}`;
+    const [ex, ey] = shiftTowards([b.x, b.y], [a.x, a.y], 10); // trim 10px from the end
+    const d = `M ${sx} ${sy} L ${ex} ${ey}`;
 
     const mx = (sx + b.x) / 2;
     const my = (sy + b.y) / 2;
@@ -495,7 +496,6 @@ function StaticMapExportButtons({ svgRef }) {
 
 /* ---------------- Main ---------------- */
 export default function GrazingPlanner() {
-  migrateLegacyLocalStorage();   // <-- run BEFORE useState initializers
   const [startDate, setStartDate] = useState(() => localStorage.getItem(LS_KEYS.START_DATE) || "");
   const prevPlannedDictRef = useRef(loadDict(LS_KEYS.PREV_PLANNED));
   const prevActualDictRef = useRef(loadDict(LS_KEYS.PREV_ACTUAL));
