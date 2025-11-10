@@ -775,7 +775,7 @@ export default function GrazingPlanner() {
       <div className="mx-auto max-w-[1600px] px-4 py-6">
         <header className="mb-4 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
-            <h1 className="text-2xl font-bold">Large Herd Grazing Planner</h1>
+            <h1 className="text-2xl font-bold">Small Herd Grazing Planner</h1>
             <p className="text-sm text-gray-600">Reorder rows to change sequence; start/end dates update automatically. Save drafts per year on the right.</p>
           </div>
           <div className="flex flex-wrap items-center gap-2">
