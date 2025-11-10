@@ -7,21 +7,30 @@ import * as turf from "@turf/turf";
 import { addDays, format, parseISO, isValid, areIntervalsOverlapping } from "date-fns";
 import { Download, Calendar, GripVertical, Save, Trash2, Plus, Copy as CopyIcon, Folder, FileText, ChevronRight, ChevronDown } from "lucide-react";
 
+// === Namespace per app (separates data across repos on the same domain) ===
+const APP_ID = (import.meta?.env?.BASE_URL || '/')
+  .replace(/^\/|\/$/g, '') || 'app';    // e.g., "grazing-planner" or "small-herd-grazing-planner"
+
+const key = (k) => `${APP_ID}:${k}`;    // helper to prefix keys
+
 /* ---------------- LocalStorage keys ---------------- */
 const LS_KEYS = {
   PREV_PLANNED: "grazingPlanner_prevPlannedADA_byPasture",
   PREV_ACTUAL: "grazingPlanner_prevActualADA_byPasture",
   LAST_PLAN: "grazingPlanner_lastPlan_rows",
   START_DATE: "grazingPlanner_startDate",
-  DRAFTS: "grazingPlanner_draftsByYear", // { "2025":[{id,name,ts,startDate,rows}, ...], ... }
+
+  // drafts system (adjust names to match your code)
+  DRAFTS_FS:    key("drafts_fs"),        // the “Year → Draft n” tree
+  FINAL_BY_YEAR:key("final_by_year"),    // optional: chosen finals per year
 };
 
-function loadDict(key) { try { return JSON.parse(localStorage.getItem(key) || "{}"); } catch { return {}; } }
-function saveDict(key, obj) { localStorage.setItem(key, JSON.stringify(obj || {})); }
+function loadDict(k) { try { return JSON.parse(localStorage.getItem(k) || "{}"); } catch { return {}; } }
+function saveDict(k, obj) { localStorage.setItem(k, JSON.stringify(obj || {})); }
 function loadRows() { try { return JSON.parse(localStorage.getItem(LS_KEYS.LAST_PLAN) || "null"); } catch { return null; } }
 function saveRows(rows) { localStorage.setItem(LS_KEYS.LAST_PLAN, JSON.stringify(rows || [])); }
-function loadDrafts() { try { return JSON.parse(localStorage.getItem(LS_KEYS.DRAFTS) || "{}"); } catch { return {}; } }
-function saveDrafts(d) { localStorage.setItem(LS_KEYS.DRAFTS, JSON.stringify(d || {})); }
+function loadDrafts() { try { return JSON.parse(localStorage.getItem(LS_KEYS.DRAFTS_FS) || "{}"); } catch { return {}; } }
+function saveDrafts(d) { localStorage.setItem(LS_KEYS.DRAFTS_FS, JSON.stringify(d || {})); }
 
 /* ---------------- Helpers ---------------- */
 const toNum = (v) => {
@@ -486,6 +495,7 @@ function StaticMapExportButtons({ svgRef }) {
 
 /* ---------------- Main ---------------- */
 export default function GrazingPlanner() {
+  migrateLegacyLocalStorage();   // <-- run BEFORE useState initializers
   const [startDate, setStartDate] = useState(() => localStorage.getItem(LS_KEYS.START_DATE) || "");
   const prevPlannedDictRef = useRef(loadDict(LS_KEYS.PREV_PLANNED));
   const prevActualDictRef = useRef(loadDict(LS_KEYS.PREV_ACTUAL));
