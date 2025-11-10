@@ -501,23 +501,20 @@ export default function GrazingPlanner() {
   const svgRef = useRef(null);
 
   const defaultRows = [
-    newRow({ pasture: "2N", acreage: 4585, herdSize: 350, grazingDays: 0 }),
-    newRow({ pasture: "2S", acreage: 1389, herdSize: 350, grazingDays: 0 }),
-    newRow({ pasture: "5N", acreage: 3448, herdSize: 350, grazingDays: 0 }),
-    newRow({ pasture: "5M", acreage: 3448, herdSize: 350, grazingDays: 0 }),
-    newRow({ pasture: "5S", acreage: 4699, herdSize: 350, grazingDays: 0 }),
-    newRow({ pasture: "12B", acreage: 1610, herdSize: 350, grazingDays: 0 }),
-    newRow({ pasture: "12E", acreage: 2562, herdSize: 350, grazingDays: 0 }),
-    newRow({ pasture: "12C", acreage: 1886, herdSize: 350, grazingDays: 0 }),
-    newRow({ pasture: "15", acreage: 4217, herdSize: 350, grazingDays: 0 }),
-    newRow({ pasture: "3", acreage: 4104, herdSize: 350, grazingDays: 0 }),
-    newRow({ pasture: "6A", acreage: 2686, herdSize: 350, grazingDays: 0 }),
-    newRow({ pasture: "6B", acreage: 1677, herdSize: 350, grazingDays: 0 }),
-    newRow({ pasture: "6D", acreage: 1978, herdSize: 350, grazingDays: 0 }),
-    newRow({ pasture: "6E", acreage: 910, herdSize: 350, grazingDays: 0 }),
-    newRow({ pasture: "12A", acreage: 995, herdSize: 350, grazingDays: 0 }),
-    newRow({ pasture: "Canoa N/S", acreage: 5513, herdSize: 350, grazingDays: 0 }),
-    newRow({ pasture: "State", acreage: 2778, herdSize: 350, grazingDays: 0 }),
+    newRow({ pasture: "UAE", acreage: 156, herdSize: 110, grazingDays: 0 }),
+    newRow({ pasture: "UAG", acreage: 441, herdSize: 110, grazingDays: 0 }),
+    newRow({ pasture: "UAF", acreage: 336, herdSize: 110, grazingDays: 0 }),
+    newRow({ pasture: "1", acreage: 782, herdSize: 110, grazingDays: 0 }),
+    newRow({ pasture: "8", acreage: 815, herdSize: 110, grazingDays: 0 }),
+    newRow({ pasture: "11C", acreage: 214, herdSize: 110, grazingDays: 0 }),
+    newRow({ pasture: "FS Ranger", acreage: , herdSize: 110, grazingDays: 0 }),
+    newRow({ pasture: "4", acreage: 670, herdSize: 110, grazingDays: 0 }),
+    newRow({ pasture: "11B", acreage: 212, herdSize: 110, grazingDays: 0 }),
+    newRow({ pasture: "UAA", acreage: 549, herdSize: 110, grazingDays: 0 }),
+    newRow({ pasture: "UAC", acreage: 365, herdSize: 110, grazingDays: 0 }),
+    newRow({ pasture: "UAH", acreage: 453, herdSize: 110, grazingDays: 0 }),
+    newRow({ pasture: "UAG", acreage: 441, herdSize: 110, grazingDays: 0 }),
+    newRow({ pasture: "UAD", acreage: 357, herdSize: 110, grazingDays: 0 }),
   ];
 
   const [rows, setRows] = useState(() => {
