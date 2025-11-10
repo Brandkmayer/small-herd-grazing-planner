@@ -501,20 +501,22 @@ export default function GrazingPlanner() {
   const svgRef = useRef(null);
 
   const defaultRows = [
-    newRow({ pasture: "UAE", acreage: 156, herdSize: 110, grazingDays: 0 }),
-    newRow({ pasture: "UAG", acreage: 441, herdSize: 110, grazingDays: 0 }),
-    newRow({ pasture: "UAF", acreage: 336, herdSize: 110, grazingDays: 0 }),
+    newRow({ pasture: "UA-E", acreage: 156, herdSize: 110, grazingDays: 0 }),
+    newRow({ pasture: "UA-G", acreage: 441, herdSize: 110, grazingDays: 0 }),
+    newRow({ pasture: "UA-F", acreage: 336, herdSize: 110, grazingDays: 0 }),
     newRow({ pasture: "1", acreage: 782, herdSize: 110, grazingDays: 0 }),
     newRow({ pasture: "8", acreage: 815, herdSize: 110, grazingDays: 0 }),
     newRow({ pasture: "11C", acreage: 214, herdSize: 110, grazingDays: 0 }),
-    newRow({ pasture: "FS Ranger", acreage: , herdSize: 110, grazingDays: 0 }),
+    newRow({ pasture: "FS Ranger", acreage: 487, herdSize: 110, grazingDays: 0 }),
     newRow({ pasture: "4", acreage: 670, herdSize: 110, grazingDays: 0 }),
     newRow({ pasture: "11B", acreage: 212, herdSize: 110, grazingDays: 0 }),
-    newRow({ pasture: "UAA", acreage: 549, herdSize: 110, grazingDays: 0 }),
-    newRow({ pasture: "UAC", acreage: 365, herdSize: 110, grazingDays: 0 }),
-    newRow({ pasture: "UAH", acreage: 453, herdSize: 110, grazingDays: 0 }),
-    newRow({ pasture: "UAG", acreage: 441, herdSize: 110, grazingDays: 0 }),
-    newRow({ pasture: "UAD", acreage: 357, herdSize: 110, grazingDays: 0 }),
+    newRow({ pasture: "UA-A", acreage: 549, herdSize: 110, grazingDays: 0 }),
+    newRow({ pasture: "UA-C", acreage: 365, herdSize: 110, grazingDays: 0 }),
+    newRow({ pasture: "UA-H", acreage: 453, herdSize: 110, grazingDays: 0 }),
+    newRow({ pasture: "UA-G", acreage: 441, herdSize: 110, grazingDays: 0 }),
+    newRow({ pasture: "UA-D", acreage: 357, herdSize: 110, grazingDays: 0 }),
+    newRow({ pasture: "140 Trap", acreage: 41, herdSize: 110, grazingDays: 0 }),
+    newRow({ pasture: "HQ", acreage: 25, herdSize: 110, grazingDays: 0 }),
   ];
 
   const [rows, setRows] = useState(() => {
