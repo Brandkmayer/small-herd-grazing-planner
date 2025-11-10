@@ -513,7 +513,6 @@ export default function GrazingPlanner() {
     newRow({ pasture: "UA-A", acreage: 549, herdSize: 110, grazingDays: 0 }),
     newRow({ pasture: "UA-C", acreage: 365, herdSize: 110, grazingDays: 0 }),
     newRow({ pasture: "UA-H", acreage: 453, herdSize: 110, grazingDays: 0 }),
-    newRow({ pasture: "UA-G", acreage: 441, herdSize: 110, grazingDays: 0 }),
     newRow({ pasture: "UA-D", acreage: 357, herdSize: 110, grazingDays: 0 }),
     newRow({ pasture: "140 Trap", acreage: 41, herdSize: 110, grazingDays: 0 }),
     newRow({ pasture: "HQ", acreage: 25, herdSize: 110, grazingDays: 0 }),
