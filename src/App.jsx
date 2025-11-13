@@ -830,7 +830,7 @@ export default function GrazingPlanner() {
                         <th className="p-2 w-40">Herd Size</th>
                         <th className="p-2">Prev. Planned ADA</th>
                         <th className="p-2">Prev. Actual ADA</th>
-                        <th className="p-2">Est. Perennial ADA (this yr)</th>                        
+                        <th className="p-2">Est. Introduced ADA (this yr)</th>                        
                         <th className="p-2">Est. Native ADA (this yr)</th>
                         <th className="p-2">Projected Grazing Days</th>
                         <th className="p-2">Proposed ADA (this yr)</th>
