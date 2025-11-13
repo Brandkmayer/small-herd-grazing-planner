@@ -849,6 +849,7 @@ export default function GrazingPlanner() {
                             row={r}
                             onChange={updateRow}
                             onDelete={deleteRow}
+                            onDuplicate={duplicateRow}
                             onSelect={setSelectedRowId}
                             isSelected={selectedRowId === r.id}
                           />
